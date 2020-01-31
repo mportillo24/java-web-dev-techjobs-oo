@@ -40,12 +40,6 @@ public class JobTest {
         assertEquals(testJob1.toString(), testJob1.toString());
     }
 
-//    @Test
-//    public void testJobsToStringPrintsOneData() {
-//        Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//        assertEquals("\n" + "Name: " + testJob1.getName() + "\n", testJob1.toString());
-//    }
-
     @Test
     public void testJobsToStringPrintsAllData() {
         Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -59,10 +53,15 @@ public class JobTest {
                 testJob1.toString());
     }
 
-    //Rework this to include ANY empty field and not just the name field
     @Test
     public void testJobsToStringHasEmptyField() {
-        Job testJob1 = new Job();
-        assertEquals("\n" + "Name: Data Not Available" + "\n", testJob1.toString());
+        Job testJob1 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals("\n" +
+                "ID: " + testJob1.getId() + "\n" +
+                "Name: " + testJob1.getName() + "\n" +
+                "Employer: Data Not Available" + "\n" +
+                "Location: " + testJob1.getLocation() + "\n" +
+                "Position Type: " + testJob1.getPositionType() + "\n" +
+                "Core Competency: " + testJob1.getCoreCompetency() + "\n", testJob1.toString());
     }
 }

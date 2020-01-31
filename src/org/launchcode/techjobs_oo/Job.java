@@ -1,6 +1,5 @@
 package org.launchcode.techjobs_oo;
 
-import javax.swing.text.Position;
 import java.util.Objects;
 
 public class Job {
@@ -97,10 +96,18 @@ public class Job {
 
     @Override
     public String toString() {
-        if (this.getName() == null) {
-            return "\n" + "Name: Data Not Available" + "\n";
-        } else {
-            return "\n" +
+        if (this.getName() == "") {
+            this.setName("Data Not Available");
+        } else if (this.getEmployer().getValue() == "") {
+            this.setEmployer(new Employer("Data Not Available"));
+        } else if (this.getLocation().getValue() == "") {
+            this.setLocation(new Location("Data Not Available"));
+        } else if (this.getPositionType().getValue() == "") {
+            this.setPositionType(new PositionType("Data Not Available"));
+        } else if (this.getCoreCompetency().getValue() == "") {
+            this.setCoreCompetency(new CoreCompetency("Data Not Available"));
+        }
+        return "\n" +
                     "ID: " + this.getId() + "\n" +
                     "Name: " + this.getName() + "\n" +
                     "Employer: " + this.getEmployer() + "\n" +
@@ -108,5 +115,4 @@ public class Job {
                     "Position Type: " + this.getPositionType() + "\n" +
                     "Core Competency: " + this.getCoreCompetency() + "\n";
         }
-    }
 }
